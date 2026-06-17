@@ -1,5 +1,8 @@
+use embassy_time::{Duration, Timer};
+use esp_hal::gpio::Output;
+
 #[embassy_executor::task]
-async fn morse(speed: u64, text: &'static str, mut buzzer: Output<'static>) {
+pub async fn morse(speed: u64, text: &'static str, mut buzzer: Output<'static>) {
 
 
     let short_beep: u64 = 1200 / speed;

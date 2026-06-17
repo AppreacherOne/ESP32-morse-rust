@@ -7,11 +7,11 @@
 )]
 
 use embassy_executor::Spawner;
-use embassy_time::{Duration, Timer};
 use esp_hal::clock::CpuClock;
 use esp_hal::gpio::{Level, Output, OutputConfig};
 use esp_hal::timer::timg::TimerGroup;
 use esp_hal::interrupt::software::SoftwareInterruptControl;
+use morza::test::morse;
 
 #[panic_handler]
 fn panic(_: &core::panic::PanicInfo) -> ! {
@@ -39,7 +39,7 @@ async fn main(spawner: Spawner) {
 
     let text = "rust is the best";
 
-    let wpm = 20;
+    let wpm = 40;
 
     spawner.spawn(morse(wpm, text, buzzer).unwrap());
 }
